@@ -11,6 +11,10 @@
             <p class="small" th:text="${produit.description}"></p>
         </div>
 
-        <button class="btn btn-info">Ajouter</button>
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-info">Ajouter</button>
+            <a th:href="@{'/carte/supprimer/'+${produit.id}}" class="btn btn-info">Supprimer</a>
+        </div>
+        
     </div>
 </div>

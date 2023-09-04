@@ -56,6 +56,30 @@ public class CarteController {
 		return "redirect:/carte";
 	}
 	
+	@GetMapping("/modifier/{id:[0-9]+}")
+	public String modifierUnProduitView(@PathVariable long id, Model model) {
+		for (Produit produit : pizzas) {
+			if(produit.getId()==id) {
+				model.addAttribute("produit", produit);
+			}
+		}
+		return "carte/modifier";
+	}	
+	
+	@PostMapping("/modifier/{id:[0-9]+}")
+	public String modifierUnProduitLogic(@Valid @ModelAttribute Produit produit, BindingResult br, Model model) {
+		if(br.hasErrors()) {
+			return "carte/ajout";
+		}
+		for (Produit produitDeList : pizzas) {
+			if(produitDeList.getId()==produit.getId()) {
+				pizzas.set(pizzas.indexOf(produitDeList), produit);
+				return "redirect:/carte";
+			}
+		}
+		return "redirect:/carte";
+	}
+	
 	@GetMapping("supprimer/{id:[0-9]+}")
 	public String details(@PathVariable long id) {
 		for (Produit produit : pizzas) {

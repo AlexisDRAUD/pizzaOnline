@@ -1,13 +1,16 @@
-<div class="row" th:fragment="produit">
-    <div class="col-sm-2 mb-3 mb-sm-0">
-        <div class="card" id="frame">
-            <div class="card-body">
-                <img class="card-img-top" height="100px" width="100px" src="https://fr.ooni.com/cdn/shop/articles/Margherita-9920.jpg?crop=center&height=800&v=1644590066&width=800" alt="">
-                <h5 class="card-title" id="titreProduit" th:text="${produit.nom}"></h5>
-                <p class="card-text" th:text="${produit.description}"></p>
-                <p class="card-text" id="prixProduit" th:text="${produit.prix+'$'}"></p>
-                <button class="btn btn-info">Ajouter</button>
-            </div>
+<div class="card" th:fragment="produit">
+    <img src="https://fr.ooni.com/cdn/shop/articles/Margherita-9920.jpg?crop=center&height=800&v=1644590066&width=800" class="card-img-top img-fluid img-thumbnail" alt="pizza"/>
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between mb-3">
+            <h5 class="mb-0" th:text="${produit.nom}"></h5>
+            <h5 class="text-dark mb-0" th:text="${produit.prix+'$'}"></h5>
         </div>
+
+        <div class="d-flex justify-content-between mb-3">
+            <p class="small" th:text="${produit.description}"></p>
+        </div>
+
+        <button class="btn btn-info">Ajouter</button>
     </div>
 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte des pizzas</title>
+    <title>Ajouter une pizza</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" th:href="@{/css/style.css}"> -->
@@ -29,22 +29,40 @@
     </header>
 
     <main>
-
         <div class="row text-center mt-4">
-            <h1>CARTES DES PIZZAS</h1>
-        </div>
+            <h1>Ajouter une pizza</h1>
 
-        <section style="background-color: #eee;"></section>
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0" th:each="produit : ${pizzas}" th:insert="~{parts/produit :: produit}">
+            <div class="row">
+                <div class="col-8 offset-2">
 
-                    </div>
+                    <form th:action="@{/carte/ajout}" method="post" th:object="${produit}">
+                        <div class="mb-3">
+                            <label for="nom" class="form-label" >Nom</label>
+                            <input type="text" class="form-control" id="nom" th:field="*{nom}">
+                            <span th:replace="~{parts/error :: error('nom')}"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" rows="4" th:field="*{description}"></textarea>
+                            <span th:replace="~{parts/error :: error('description')}"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prix" class="form-label">Prix</label>
+                            <input type="number" class="form-control" id="prix" step=".01" th:field="*{prix}">
+                            <span th:replace="~{parts/error :: error('prix')}"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imgurl" class="form-label">URL de l'image</label>
+                            <input type="text" class="form-control" id="imgurl" th:field="*{urlImage}">
+                            <span th:replace="~{parts/error :: error('urlImage')}"></span>
+                        </div>
+                        <button class="btn btn-info" type="submit">Ajouter à la carte</button>
+                    </form>
+
                 </div>
-                
             </div>
-        </section>
 
+        </div>
     </main>    
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

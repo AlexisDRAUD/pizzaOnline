@@ -35,16 +35,16 @@ public class CarteController {
 		
 	}
 	
-	@GetMapping("/ajout")
+	@GetMapping("/ajouter")
 	public String ajouterUnProduitView(Model model) {
 		model.addAttribute("produit", new Produit());
-		return "carte/ajout";
+		return "carte/ajouter";
 	}	
 	
-	@PostMapping("/ajout")
+	@PostMapping("/ajouter")
 	public String ajouterUnProduitLogic(@Valid @ModelAttribute Produit produit, BindingResult br, Model model) {
 		if(br.hasErrors()) {
-			return "carte/ajout";
+			return "carte/ajouter";
 		}
 		//
 			produit.setId(Long.valueOf(cptID));

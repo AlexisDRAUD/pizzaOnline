@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
 
-                    <form th:action="@{/carte/ajout}" method="post" th:object="${produit}">
+                    <form th:action="@{/carte/ajouter}" method="post" th:object="${produit}">
                         <div class="mb-3">
                             <label for="nom" class="form-label" >Nom</label>
                             <input type="text" class="form-control" id="nom" th:field="*{nom}">

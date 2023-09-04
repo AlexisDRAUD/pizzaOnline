@@ -2,7 +2,6 @@ package fr.eni.pizzaOnline.bo;
 
 import java.io.Serializable;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 

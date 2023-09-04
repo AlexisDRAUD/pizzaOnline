@@ -1,5 +1,5 @@
 <div class="card" th:fragment="produit">
-    <img src="https://fr.ooni.com/cdn/shop/articles/Margherita-9920.jpg?crop=center&height=800&v=1644590066&width=800" class="card-img-top img-fluid img-thumbnail" alt="pizza"/>
+    <img th:src="@{${produit.urlImage}}" class="card-img-top img-fluid img-thumbnail" alt="pizza"/>
     <div class="card-body">
 
         <div class="d-flex justify-content-between mb-3">

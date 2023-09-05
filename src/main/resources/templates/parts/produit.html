@@ -12,6 +12,7 @@
         </div>
 
         <div class="d-flex justify-content-between mb-3">
+            <a th:href="@{'/commande/ajouter/'+${produit.id}}" class="btn btn-info">Ajouter au panier</a>
             <a th:href="@{'/carte/modifier/'+${produit.id}}" class="btn btn-info">Modifier</a>
             <a th:href="@{'/carte/supprimer/'+${produit.id}}" class="btn btn-info">Supprimer</a>
         </div>

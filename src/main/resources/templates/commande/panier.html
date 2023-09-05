@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr" layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Panier</title>
+</head>
+<body>
+
+    <main layout:fragment="content">
+
+        <div class="row text-center mt-4">
+            <h1>Panier</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-8 offset-2">
+                <table class="table table-primary mt-4">
+                    <thead>
+                        <th></th>
+                        <th>Nom du produit</th>
+                        <th>Prix</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="produit : ${produitsPanier}">
+                            <td><img th:src="@{${produit.urlImage}}" width="200px" class="img-fluid img-thumbnail" alt="pizza"/></td>
+                            <td th:text="${produit.nom}"></td>
+                            <td th:text="${produit.prix+'€'}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>    
+        
+</body>
+</html>

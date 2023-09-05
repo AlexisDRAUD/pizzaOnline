@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.eni.pizzaOnline.bo.Produit;
+import fr.eni.pizzaOnline.repository.TypeProduitRepository;
 import fr.eni.pizzaOnline.service.ProduitService;
 import jakarta.validation.Valid;
 
@@ -21,16 +22,20 @@ public class CarteController {
 	@Autowired
 	ProduitService ps;
 	
+	@Autowired
+	TypeProduitRepository tpr;
+	
 	@GetMapping
 	public String afficherCarte(Model model) {
-		
-		model.addAttribute("pizzas", ps.tousLesProduits());
+		 
+		model.addAttribute("pizzas", ps.tousLesProduits());		
 		return "carte/liste";
 		
 	}
 	
 	@GetMapping("/ajouter")
 	public String ajouterUnProduitView(Model model) {
+		model.addAttribute("typesProduit", tpr.findAll());
 		model.addAttribute("produit", new Produit());
 		return "carte/ajouter";
 	}	

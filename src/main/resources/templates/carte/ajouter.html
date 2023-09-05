@@ -13,27 +13,40 @@
                 <div class="col-8 offset-2">
 
                     <form th:action="@{/carte/ajouter}" method="post" th:object="${produit}">
+
+                        <div class="mb-3">
+                            <label for="typesProduit" class="form-label">Type de produit</label>
+                            <select class="form-select" id="typesProduit" rows="4" th:field="*{typeProduit}">
+                                <option th:each="typeProduit : ${typesProduit}" th:text="${typeProduit.libelle}" th:value="${typeProduit.id}"></option>
+                            </select>
+                        </div>
+
                         <div class="mb-3">
                             <label for="nom" class="form-label" >Nom</label>
                             <input type="text" class="form-control" id="nom" th:field="*{nom}">
                             <span th:replace="~{parts/error :: error('nom')}"></span>
                         </div>
+
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" rows="4" th:field="*{description}"></textarea>
                             <span th:replace="~{parts/error :: error('description')}"></span>
                         </div>
+
                         <div class="mb-3">
                             <label for="prix" class="form-label">Prix</label>
                             <input type="number" class="form-control" id="prix" step=".01" th:field="*{prix}">
                             <span th:replace="~{parts/error :: error('prix')}"></span>
                         </div>
+
                         <div class="mb-3">
                             <label for="imgurl" class="form-label">URL de l'image</label>
                             <input type="text" class="form-control" id="imgurl" th:field="*{urlImage}">
                             <span th:replace="~{parts/error :: error('urlImage')}"></span>
                         </div>
+
                         <button class="btn btn-info" type="submit">Ajouter à la carte</button>
+
                     </form>
 
                 </div>

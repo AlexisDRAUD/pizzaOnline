@@ -16,27 +16,27 @@ public class ProduitServiceImpl implements ProduitService {
 	
 	@Override
 	public List<Produit> tousLesProduits() {
-		return pr.findAllProduits();
+		return pr.findAll();
 	}
 
 	@Override
 	public Produit ProduitParID(long id) {
-		return pr.findProduitByID(id);
+		return pr.findById(id).get();
 	}
 
 	@Override
 	public void ajouterUnProduit(Produit produit) {
-		pr.addProduit(produit);
+		pr.save(produit);
 	}
 
 	@Override
 	public void modifierUnProduit(Produit produit) {
-		pr.updateProduit(produit);
+		pr.save(produit);
 	}
 
 	@Override
 	public void supprimerUnProduitParID(long id) {
-		pr.removeProduitByID(id);
+		pr.deleteById(id);
 	}
 
 }

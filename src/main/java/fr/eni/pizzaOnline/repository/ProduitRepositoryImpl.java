@@ -13,12 +13,11 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
-@Repository
-public class ProduitRepositoryImpl implements ProduitRepository {
+public class ProduitRepositoryImpl {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public List<Produit> findAllProduits() {
 		CriteriaBuilder cb = em.getCriteriaBuilder();

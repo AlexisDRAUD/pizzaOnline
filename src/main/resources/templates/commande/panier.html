@@ -18,12 +18,14 @@
                         <th></th>
                         <th>Nom du produit</th>
                         <th>Prix</th>
+                        <th>Quantité</th>
                     </thead>
                     <tbody>
-                        <tr th:each="produit : ${produitsPanier}">
-                            <td><img th:src="@{${produit.urlImage}}" width="200px" class="img-fluid img-thumbnail" alt="pizza"/></td>
-                            <td th:text="${produit.nom}"></td>
-                            <td th:text="${produit.prix+'€'}"></td>
+                        <tr th:each="detail : ${detailsCommande}">
+                            <td><img th:src="@{${detail.produit.urlImage}}" width="200px" class="img-fluid img-thumbnail" alt="pizza"/></td>
+                            <td th:text="${detail.produit.nom}"></td>
+                            <td th:text="${detail.produit.prix+'€'}"></td>
+                            <td th:text="${detail.quantite}"></td>
                         </tr>
                     </tbody>
                 </table>

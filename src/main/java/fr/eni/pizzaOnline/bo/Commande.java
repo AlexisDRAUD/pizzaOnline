@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Commande implements Serializable {
@@ -17,16 +19,18 @@ public class Commande implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private List<Produit> listProd = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<DetailCommande> detailsCommande = new ArrayList<>();
+	//private List<Produit> listProd = new ArrayList<>();
 
 	public Commande() {
 		super();
 	}
 
-	public Commande(Long id, List<Produit> listProd) {
+	public Commande(Long id, List<DetailCommande> detailsCommande) {
 		super();
 		this.id = id;
-		this.listProd = listProd;
+		this.detailsCommande = detailsCommande;
 	}
 
 	public Long getId() {
@@ -37,13 +41,27 @@ public class Commande implements Serializable {
 		this.id = id;
 	}
 
-	public List<Produit> getListProd() {
-		return listProd;
+	public List<DetailCommande> getDetailsCommande() {
+		return detailsCommande;
 	}
 
-	public void setListProd(List<Produit> listProd) {
-		this.listProd = listProd;
+	public void setDetailsCommande(List<DetailCommande> detailsCommande) {
+		this.detailsCommande = detailsCommande;
 	}
+
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + "]";
+	}
+	
+
+//	public List<Produit> getListProd() {
+//		return listProd;
+//	}
+//
+//	public void setListProd(List<Produit> listProd) {
+//		this.listProd = listProd;
+//	}
 	
 	
 //	private LocalDateTime dateHeureLivraison;

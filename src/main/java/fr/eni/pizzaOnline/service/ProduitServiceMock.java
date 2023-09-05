@@ -3,11 +3,8 @@ package fr.eni.pizzaOnline.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import fr.eni.pizzaOnline.bo.Produit;
 
-@Service
 public class ProduitServiceMock implements ProduitService {
 	
 	public List<Produit> pizzas = new ArrayList<>();

@@ -43,7 +43,7 @@ public class ProduitRepositoryMock implements ProduitRepository {
 	}
 
 	@Override
-	public void modifierProduit(Produit produit) {
+	public void updateProduit(Produit produit) {
 		for (Produit produitDeList : pizzas) {
 			if(produitDeList.getId()==produit.getId()) {
 				pizzas.set(pizzas.indexOf(produitDeList), produit);

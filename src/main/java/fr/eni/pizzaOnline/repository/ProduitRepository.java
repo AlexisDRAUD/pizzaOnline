@@ -9,7 +9,7 @@ public interface ProduitRepository {
 		List<Produit> findAllProduits();
 		Produit findProduitByID(long id);
 		void addProduit(Produit produit);
-		void modifierProduit(Produit produit);
+		void updateProduit(Produit produit);
 		void removeProduitByID(long id);
 
 }

@@ -26,6 +26,7 @@ public class PanierController {
 	@GetMapping
 	public String afficherPanier(Model model, @ModelAttribute("commande") Commande commande) {
 		model.addAttribute("detailsCommande",commande.getDetailsCommande());
+		model.addAttribute("totalPrix",cs.getTotalPrixCommande(commande));
 		return "commande/panier";
 	}
 	
@@ -39,6 +40,19 @@ public class PanierController {
 	public String soustraireQuantite(@PathVariable long id, @ModelAttribute("commande") Commande commande) {
 		commande = cs.soustraireQuantiteProduitParID(commande, ps.ProduitParID(id));
 		return "redirect:/panier";
+	}
+	
+	@GetMapping("/supprimer/{id:[0-9]+}")
+	public String supprimerProduitDuPanier(@PathVariable long id, @ModelAttribute("commande") Commande commande) {
+		commande = cs.supprimerProduitParID(commande, ps.ProduitParID(id));
+		return "redirect:/panier";
+	}
+	
+	@GetMapping("/commander")
+	public String commanderPanier(@ModelAttribute("commande") Commande commande) {
+		cs.ajouterUneCommande(commande);
+		//commande = null;
+		return "redirect:/commande";
 	}
 	
 }

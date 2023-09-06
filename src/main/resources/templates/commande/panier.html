@@ -29,10 +29,14 @@
                                 <input type="text" th:value="${detail.quantite}" readonly>
                                 <a th:href="@{'/panier/ajouterQuantite/'+${detail.produit.id}}" class="btn btn-info">+</a>
                                 <a th:href="@{'/panier/soustraireQuantite/'+${detail.produit.id}}" class="btn btn-info">-</a>
+                                <a th:href="@{'/panier/supprimer/'+${detail.produit.id}}" class="btn btn-danger">X</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <label for="">Total: </label>
+                <input type="text" readonly th:value="${totalPrix}">
+                <a th:href="@{/panier/commander}" class="btn btn-info">Commander</a>
             </div>
         </div>
 

@@ -54,16 +54,6 @@ public class Commande implements Serializable {
 		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + "]";
 	}
 	
-
-//	public List<Produit> getListProd() {
-//		return listProd;
-//	}
-//
-//	public void setListProd(List<Produit> listProd) {
-//		this.listProd = listProd;
-//	}
-	
-	
 //	private LocalDateTime dateHeureLivraison;
 //	private LocalDateTime dateHeurePreparation;
 

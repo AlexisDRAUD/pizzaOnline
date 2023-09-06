@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import fr.eni.pizzaOnline.bo.Commande;
+import fr.eni.pizzaOnline.repository.EtatRepository;
 import fr.eni.pizzaOnline.service.CommandeService;
 import fr.eni.pizzaOnline.service.ProduitService;
 
@@ -20,13 +21,15 @@ public class CommandeController {
 	
 	@ModelAttribute("commande")
 	Commande setCommande() {
-		return new Commande();
+		return new Commande(er.findById(1).get());
 	}
 	
 	@Autowired
 	ProduitService ps;
 	@Autowired
 	CommandeService cs;
+	@Autowired
+	EtatRepository er;
 	
 	@GetMapping("/commande")
 	public String afficherCarte(Model model) {

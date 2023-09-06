@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.eni.pizzaOnline.bo.Produit;
+import fr.eni.pizzaOnline.repository.EtatRepository;
 import fr.eni.pizzaOnline.repository.TypeProduitRepository;
 import fr.eni.pizzaOnline.service.ProduitService;
 import jakarta.validation.Valid;
@@ -24,6 +25,8 @@ public class CarteController {
 	
 	@Autowired
 	TypeProduitRepository tpr;
+	@Autowired
+	EtatRepository er;
 	
 	@GetMapping
 	public String afficherCarte(Model model) {

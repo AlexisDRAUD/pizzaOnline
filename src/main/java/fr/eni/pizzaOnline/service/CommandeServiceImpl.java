@@ -7,7 +7,6 @@ import fr.eni.pizzaOnline.bo.Commande;
 import fr.eni.pizzaOnline.bo.DetailCommande;
 import fr.eni.pizzaOnline.bo.Produit;
 import fr.eni.pizzaOnline.repository.CommandeRepository;
-import fr.eni.pizzaOnline.repository.ProduitRepository;
 
 @Service
 public class CommandeServiceImpl implements CommandeService {

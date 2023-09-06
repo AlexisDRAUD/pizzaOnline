@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -21,16 +22,23 @@ public class Commande implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<DetailCommande> detailsCommande = new ArrayList<>();
-	//private List<Produit> listProd = new ArrayList<>();
+
+	@ManyToOne
+	private Etat etat;
 
 	public Commande() {
 		super();
 	}
+	 
+	public Commande(Etat etat) {
+		this.etat = etat;
+	}
 
-	public Commande(Long id, List<DetailCommande> detailsCommande) {
+	public Commande(Long id, List<DetailCommande> detailsCommande, Etat etat) {
 		super();
 		this.id = id;
 		this.detailsCommande = detailsCommande;
+		this.etat = etat;
 	}
 
 	public Long getId() {
@@ -49,16 +57,24 @@ public class Commande implements Serializable {
 		this.detailsCommande = detailsCommande;
 	}
 
+	public Etat getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
+
 	@Override
 	public String toString() {
-		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + "]";
+		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + ", etat=" + etat + "]";
 	}
+	
+	
+
+	
 	
 //	private LocalDateTime dateHeureLivraison;
 //	private LocalDateTime dateHeurePreparation;
-
-//	private Etat etat;
-	
-	
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import fr.eni.pizzaOnline.bo.Commande;
+import fr.eni.pizzaOnline.repository.EtatRepository;
 import fr.eni.pizzaOnline.service.CommandeService;
 import fr.eni.pizzaOnline.service.ProduitService;
 
@@ -22,6 +23,8 @@ public class PanierController {
 	ProduitService ps;
 	@Autowired
 	CommandeService cs;
+	@Autowired
+	EtatRepository er;
 	
 	@GetMapping
 	public String afficherPanier(Model model, @ModelAttribute("commande") Commande commande) {
@@ -50,6 +53,7 @@ public class PanierController {
 	
 	@GetMapping("/commander")
 	public String commanderPanier(@ModelAttribute("commande") Commande commande) {
+		commande.setEtat(er.findById(2).get());
 		cs.ajouterUneCommande(commande);
 		//commande = null;
 		return "redirect:/commande";

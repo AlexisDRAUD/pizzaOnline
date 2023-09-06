@@ -1,5 +1,7 @@
 package fr.eni.pizzaOnline.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +68,8 @@ public class CommandeServiceImpl implements CommandeService {
 
 	@Override
 	public void ajouterUneCommande(Commande commande) {
+		commande.setDateHeureLivraison(LocalDateTime.now().plusHours(2));
+		commande.setDateHeurePreparation(LocalDateTime.now().plusHours(1));
 		cr.save(commande);
 	}	
 

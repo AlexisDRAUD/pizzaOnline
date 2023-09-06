@@ -55,7 +55,8 @@ public class PanierController {
 	public String commanderPanier(@ModelAttribute("commande") Commande commande) {
 		commande.setEtat(er.findById(2).get());
 		cs.ajouterUneCommande(commande);
-		//commande = null;
+		commande.resetCommande();
+		commande.setEtat(er.findById(1).get());
 		return "redirect:/commande";
 	}
 	

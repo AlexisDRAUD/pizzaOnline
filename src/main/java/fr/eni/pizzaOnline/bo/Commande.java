@@ -27,8 +27,8 @@ public class Commande implements Serializable {
 	@ManyToOne
 	private Etat etat;
 	
-	private LocalDateTime dateHeureLivraison = LocalDateTime.now().plusHours(2);
-	private LocalDateTime dateHeurePreparation = LocalDateTime.now().plusHours(1);
+	private LocalDateTime dateHeureLivraison;
+	private LocalDateTime dateHeurePreparation;
 
 	public Commande() {
 		super();
@@ -99,6 +99,15 @@ public class Commande implements Serializable {
 	public String toString() {
 		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + ", etat=" + etat
 				+ ", dateHeureLivraison=" + dateHeureLivraison + ", dateHeurePreparation=" + dateHeurePreparation + "]";
+	}
+	
+	
+	public void resetCommande() {
+		this.id = null;
+		this.detailsCommande = new ArrayList<>();
+		this.etat = null;
+		this.dateHeureLivraison = null;
+		this.dateHeurePreparation = null;
 	}
 
 

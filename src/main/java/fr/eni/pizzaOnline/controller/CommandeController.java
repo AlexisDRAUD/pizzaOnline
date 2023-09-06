@@ -41,10 +41,4 @@ public class CommandeController {
 		return "redirect:/commande";
 	}
 	
-	@GetMapping("/panier")
-	public String afficherPanier(Model model, @ModelAttribute("commande") Commande commande) {
-		model.addAttribute("detailsCommande",commande.getDetailsCommande());
-		return "commande/panier";
-	}
-	
 }

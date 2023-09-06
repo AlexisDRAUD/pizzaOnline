@@ -25,7 +25,11 @@
                             <td><img th:src="@{${detail.produit.urlImage}}" width="200px" class="img-fluid img-thumbnail" alt="pizza"/></td>
                             <td th:text="${detail.produit.nom}"></td>
                             <td th:text="${detail.produit.prix+'€'}"></td>
-                            <td th:text="${detail.quantite}"></td>
+                            <td>
+                                <input type="text" th:value="${detail.quantite}" readonly>
+                                <a th:href="@{'/panier/ajouterQuantite/'+${detail.produit.id}}" class="btn btn-info">+</a>
+                                <a th:href="@{'/panier/soustraireQuantite/'+${detail.produit.id}}" class="btn btn-info">-</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

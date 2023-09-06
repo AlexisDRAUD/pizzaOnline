@@ -20,6 +20,26 @@ public class CommandeServiceImpl implements CommandeService {
 		}
 		return commande;
 	}
+
+	@Override
+	public Commande ajouterQuantiteProduitParID(Commande commande, Produit produit) {
+		DetailCommande detailCommandeToAdd = new DetailCommande(1, commande, produit);
+		if(commande.getDetailsCommande().contains(detailCommandeToAdd)) {
+			int quantite = commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).getQuantite()+1;
+			commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).setQuantite(quantite);
+		}
+		return commande;
+	}
+
+	@Override
+	public Commande soustraireQuantiteProduitParID(Commande commande, Produit produit) {
+		DetailCommande detailCommandeToAdd = new DetailCommande(1, commande, produit);
+		if(commande.getDetailsCommande().contains(detailCommandeToAdd)) {
+			int quantite = commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).getQuantite()-1;
+			commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).setQuantite(quantite);
+		}
+		return commande;
+	}
 	
 	
 

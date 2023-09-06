@@ -13,7 +13,9 @@
 
         <section style="background-color: #eee;"></section>
             <div class="container py-5">
+                
                 <div class="row">
+                    <a class="btn btn-primary mb-4" th:href="@{/carte/ajouter}">Ajouter un produit</a>
                     <div class="col-md-6 col-lg-4 mb-4 mb-md-0" th:each="produit : ${produits}" th:insert="~{parts/produit :: produit('carte')}">
 
                     </div>

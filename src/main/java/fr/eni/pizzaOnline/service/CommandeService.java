@@ -6,5 +6,7 @@ import fr.eni.pizzaOnline.bo.Produit;
 public interface CommandeService {
 
 	Commande ajouterProduitAuPanier(Commande commande, int quantite, Produit produit);
+	Commande ajouterQuantiteProduitParID(Commande commande, Produit produit);
+	Commande soustraireQuantiteProduitParID(Commande commande, Produit produit);
 	
 }

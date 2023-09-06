@@ -1,6 +1,7 @@
 package fr.eni.pizzaOnline.bo;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -73,6 +74,25 @@ public class DetailCommande implements Serializable {
 		return "DetailCommande [id=" + id + ", quantite=" + quantite + ", commande=" + ", produit=" + produit
 				+ "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(commande, id, produit);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DetailCommande other = (DetailCommande) obj;
+		return Objects.equals(commande, other.commande) && Objects.equals(id, other.id)
+				&& Objects.equals(produit, other.produit);
+	}
+	
 	
 	
 }

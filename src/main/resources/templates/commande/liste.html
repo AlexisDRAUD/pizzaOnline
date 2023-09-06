@@ -14,15 +14,14 @@
         <section style="background-color: #eee;"></section>
             <div class="container py-5">
                 <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0" th:each="produit : ${produits}" th:insert="~{parts/produit :: produit('carte')}">
+                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0" th:each="produit : ${produits}" th:insert="~{parts/produit :: produit('commande')}">
 
                     </div>
                 </div>
                 
             </div>
         </section>
-
-    </main>    
-        
+        <script src="js/script.js"></script>   
+    </main>     
 </body>
 </html>

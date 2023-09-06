@@ -1,4 +1,4 @@
-<div class="card" th:fragment="produit">
+<div class="card" th:fragment="produit(appel)">
     <img th:src="@{${produit.urlImage}}" class="card-img-top img-fluid img-thumbnail" alt="pizza"/>
     <div class="card-body">
 
@@ -11,11 +11,19 @@
             <p class="small" th:text="${produit.description}"></p>
         </div>
 
-        <div class="d-flex justify-content-between mb-3">
-            <a th:href="@{'/commande/ajouter/'+${produit.id}}" class="btn btn-info">Ajouter au panier</a>
+        <div class="d-flex justify-content-between mb-3" th:if="${appel == 'carte'}">
             <a th:href="@{'/carte/modifier/'+${produit.id}}" class="btn btn-info">Modifier</a>
             <a th:href="@{'/carte/supprimer/'+${produit.id}}" class="btn btn-info">Supprimer</a>
         </div>
-        
+
+        <form th:action="@{'/commande/ajouter/'+${produit.id}}" method="post" th:if="${appel == 'commande'}">
+            <div class="d-flex justify-content-between mb-3">
+                <button type="submit" class="btn btn-info">Ajouter au panier</button>
+                <button type="button" value="-" id="moins" onclick="minus(this)"></button>
+                <input type="text" value="1" name="quantite">
+                <button type="button" value="+" id="plusquantite" onclick="plus(this)"></button>
+            </div>
+        </form>
+
     </div>
 </div>

@@ -11,7 +11,7 @@ public class CommandeServiceImpl implements CommandeService {
 
 	@Override
 	public Commande ajouterProduitAuPanier(Commande commande, int quantite, Produit produit) {
-		DetailCommande detailCommandeToAdd = new DetailCommande(1, commande, produit);
+		DetailCommande detailCommandeToAdd = new DetailCommande(quantite, commande, produit);
 		if(commande.getDetailsCommande().contains(detailCommandeToAdd)) {
 			quantite+=commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).getQuantite();
 			commande.getDetailsCommande().get(commande.getDetailsCommande().indexOf(detailCommandeToAdd)).setQuantite(quantite);
@@ -20,5 +20,7 @@ public class CommandeServiceImpl implements CommandeService {
 		}
 		return commande;
 	}
+	
+	
 
 }

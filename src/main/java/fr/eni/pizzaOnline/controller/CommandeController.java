@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import fr.eni.pizzaOnline.bo.Commande;
@@ -26,10 +28,17 @@ public class CommandeController {
 	@Autowired
 	CommandeService cs;
 	
-	@GetMapping("/commande/ajouter/{id:[0-9]+}")
-	public String ajouterAuPanier(@PathVariable long id, @ModelAttribute("commande") Commande commande) {
-		commande = cs.ajouterProduitAuPanier(commande, 1, ps.ProduitParID(id));
-		return "redirect:/carte";
+	@GetMapping("/commande")
+	public String afficherCarte(Model model) {
+		model.addAttribute("produits", ps.tousLesProduits());		
+		return "commande/liste";
+	}
+	
+	@PostMapping("/commande/ajouter/{id:[0-9]+}")
+	public String ajouterAuPanier(@PathVariable long id, @ModelAttribute("commande") Commande commande,
+									@RequestParam int quantite) {
+		commande = cs.ajouterProduitAuPanier(commande, quantite, ps.ProduitParID(id));
+		return "redirect:/commande";
 	}
 	
 	@GetMapping("/panier")

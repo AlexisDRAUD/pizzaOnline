@@ -27,10 +27,8 @@ public class CarteController {
 	
 	@GetMapping
 	public String afficherCarte(Model model) {
-		 
-		model.addAttribute("pizzas", ps.tousLesProduits());		
+		model.addAttribute("produits", ps.tousLesProduits());		
 		return "carte/liste";
-		
 	}
 	
 	@GetMapping("/ajouter")

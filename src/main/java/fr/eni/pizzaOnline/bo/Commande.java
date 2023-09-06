@@ -1,6 +1,7 @@
 package fr.eni.pizzaOnline.bo;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class Commande implements Serializable {
 
 	@ManyToOne
 	private Etat etat;
+	
+	private LocalDateTime dateHeureLivraison = LocalDateTime.now().plusHours(2);
+	private LocalDateTime dateHeurePreparation = LocalDateTime.now().plusHours(1);
 
 	public Commande() {
 		super();
@@ -39,6 +43,16 @@ public class Commande implements Serializable {
 		this.id = id;
 		this.detailsCommande = detailsCommande;
 		this.etat = etat;
+	}
+
+	public Commande(Long id, List<DetailCommande> detailsCommande, Etat etat, LocalDateTime dateHeureLivraison,
+			LocalDateTime dateHeurePreparation) {
+		super();
+		this.id = id;
+		this.detailsCommande = detailsCommande;
+		this.etat = etat;
+		this.dateHeureLivraison = dateHeureLivraison;
+		this.dateHeurePreparation = dateHeurePreparation;
 	}
 
 	public Long getId() {
@@ -65,16 +79,27 @@ public class Commande implements Serializable {
 		this.etat = etat;
 	}
 
+	public LocalDateTime getDateHeureLivraison() {
+		return dateHeureLivraison;
+	}
+
+	public void setDateHeureLivraison(LocalDateTime dateHeureLivraison) {
+		this.dateHeureLivraison = dateHeureLivraison;
+	}
+
+	public LocalDateTime getDateHeurePreparation() {
+		return dateHeurePreparation;
+	}
+
+	public void setDateHeurePreparation(LocalDateTime dateHeurePreparation) {
+		this.dateHeurePreparation = dateHeurePreparation;
+	}
+
 	@Override
 	public String toString() {
-		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + ", etat=" + etat + "]";
+		return "Commande [id=" + id + ", detailsCommande=" + detailsCommande + ", etat=" + etat
+				+ ", dateHeureLivraison=" + dateHeureLivraison + ", dateHeurePreparation=" + dateHeurePreparation + "]";
 	}
-	
-	
 
-	
-	
-//	private LocalDateTime dateHeureLivraison;
-//	private LocalDateTime dateHeurePreparation;
-	
+
 }
